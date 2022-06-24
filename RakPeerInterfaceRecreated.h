@@ -1,5 +1,7 @@
 #pragma once
 
+#include "OLBitStreamWriter.h"
+
 #include <cstdint>
 
 #define UNIMPLEMENTED(name) virtual void name() final { UnimplementedPurecall(#name); }
@@ -29,25 +31,31 @@ public:
 	UNIMPLEMENTED(SetIncomingPassword)
 	UNIMPLEMENTED(GetIncomingPassword)
 
-	UNIMPLEMENTED(Connect)
+	virtual uint32_t Connect(char* host, uint16_t remotePort, char* passwordData, uint32_t passworkDataLenght, uint32_t connectionSocketIndex, uint32_t extraData) = 0;
+
 	UNIMPLEMENTED(Shutdown)
 	UNIMPLEMENTED(IsActive)
 	UNIMPLEMENTED(GetConnectionList)
 
 	UNIMPLEMENTED(UNKNOWN1)
-	UNIMPLEMENTED(UNKNOWN2)
+
+	virtual bool Send2(OLBitStreamWriter* stream, uint32_t arg2, uint32_t arg3, char arg4, uint32_t arg5, uint32_t arg6, char arg7) = 0;
+
 	UNIMPLEMENTED(UNKNOWN3)
 	UNIMPLEMENTED(UNKNOWN4)
 	UNIMPLEMENTED(UNKNOWN5)
 
 	virtual void* Receive(void* arg) = 0;
 
-	UNIMPLEMENTED(NOTSURE1)
+	UNIMPLEMENTED(GetPacket)
 	UNIMPLEMENTED(DeallocatePacket)
 
 	UNIMPLEMENTED(GetMaximumNumberOfPeers)
 	UNIMPLEMENTED(NOTSURE3)
-	UNIMPLEMENTED(CloseConnection)
+	
+	// This might not actually be CloseConnection...
+	virtual bool CloseConnection(uint32_t arg1, uint32_t arg2, char arg3, char arg4) = 0;
+
 	UNIMPLEMENTED(GetConnectionState)
 	UNIMPLEMENTED(CancelConnectionAttempt)
 	UNIMPLEMENTED(GetIndexFromSystemAddress)

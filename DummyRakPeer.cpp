@@ -51,8 +51,26 @@ uint16_t DummyRakPeer::NumberOfConnections()
 	return 0;
 }
 
+uint32_t DummyRakPeer::Connect(char* host, uint16_t remotePort, char* passwordData, uint32_t passworkDataLenght, uint32_t connectionSocketIndex, uint32_t extraData)
+{
+	return 0xFFFFFF00;
+}
+
+bool DummyRakPeer::Send2(OLBitStreamWriter* stream, uint32_t arg2, uint32_t arg3, char arg4, uint32_t arg5, uint32_t arg6, char arg7)
+{
+	DBGPRINT(L"Sending %u bytes from %u.", stream->getNumberOfBytesUsed(), stream->getData());
+
+	return true;
+}
+
 void* DummyRakPeer::Receive(void* arg)
 {
 	DBGPRINT(L"You have no new messages...");
 	return nullptr;
+}
+
+bool DummyRakPeer::CloseConnection(uint32_t arg1, uint32_t arg2, char arg3, char arg4)
+{
+	DBGPRINT(L"I think we closed a connection...");
+	return true;
 }
