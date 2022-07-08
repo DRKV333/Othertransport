@@ -1,6 +1,6 @@
 #pragma once
 
-#include "OLBitStreamWriter.h"
+#include "OLRakNetTypes.h"
 
 #include <cstdint>
 
@@ -14,7 +14,7 @@ private:
 public:
 	virtual ~RakPeerInterfaceRecreated() = default;
 
-	virtual uint32_t Startup(uint16_t maxConnections, int32_t _threadSleepTimer, void* socketDescriptor, uint32_t socketDescriptorCount, void* logger1, void* logger2) = 0;
+	virtual bool Startup(uint16_t maxConnections, int32_t _threadSleepTimer, void* socketDescriptor, uint32_t socketDescriptorCount, void* logger1, void* logger2) = 0;
 
 	virtual void InitializeSecurity(void* arg1, void* arg2, int arg3, int arg4) final { } // This is called with all 0s after GetRakPeerInterface.
 
@@ -31,30 +31,29 @@ public:
 	UNIMPLEMENTED(SetIncomingPassword)
 	UNIMPLEMENTED(GetIncomingPassword)
 
-	virtual uint32_t Connect(char* host, uint16_t remotePort, char* passwordData, uint32_t passworkDataLenght, uint32_t connectionSocketIndex, uint32_t extraData) = 0;
+	virtual bool Connect(char* host, uint16_t remotePort, char* passwordData, uint32_t passworkDataLenght, uint32_t connectionSocketIndex) = 0;
 
 	UNIMPLEMENTED(Shutdown)
 	UNIMPLEMENTED(IsActive)
 	UNIMPLEMENTED(GetConnectionList)
 
-	UNIMPLEMENTED(UNKNOWN1)
+	UNIMPLEMENTED(Send1)
 
-	virtual bool Send2(OLBitStreamWriter* stream, uint32_t arg2, uint32_t arg3, char arg4, uint32_t arg5, uint32_t arg6, char arg7) = 0;
+	virtual bool Send2(class OLBitStreamWriter* stream, uint32_t arg2, uint32_t arg3, char arg4, uint32_t arg5, uint32_t arg6, char arg7) = 0;
 
-	UNIMPLEMENTED(UNKNOWN3)
-	UNIMPLEMENTED(UNKNOWN4)
-	UNIMPLEMENTED(UNKNOWN5)
+	UNIMPLEMENTED(Send3)
+	UNIMPLEMENTED(Send4)
+	UNIMPLEMENTED(Send5)
 
 	virtual void* Receive(void* arg) = 0;
 
-	UNIMPLEMENTED(GetPacket)
+	UNIMPLEMENTED(AllocatePacket)
 	UNIMPLEMENTED(DeallocatePacket)
 
 	UNIMPLEMENTED(GetMaximumNumberOfPeers)
 	UNIMPLEMENTED(NOTSURE3)
 	
-	// This might not actually be CloseConnection...
-	virtual bool CloseConnection(uint32_t arg1, uint32_t arg2, char arg3, char arg4) = 0;
+	virtual bool IsConnected(OLSystemAddress address, bool flag1, bool flag2) = 0;
 
 	UNIMPLEMENTED(GetConnectionState)
 	UNIMPLEMENTED(CancelConnectionAttempt)
@@ -115,7 +114,7 @@ public:
 	}
 
 	UNIMPLEMENTED(FUN_0174d4c0)
-	UNIMPLEMENTED(FUN_01753b40)
+	UNIMPLEMENTED(SetLogger)
 	UNIMPLEMENTED(FUN_01753ba0)
 };
 
