@@ -18,10 +18,10 @@
     <ClInclude Include="pch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="addrs.h">
+    <ClInclude Include="Addrs.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="RakPeerInterfaceRecreated.h">
+    <ClInclude Include="OLRakPeerInterface.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="RakPeerFactoryRedirect.h">
@@ -47,10 +47,10 @@
     <ClCompile Include="pch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="addrs.cpp">
+    <ClCompile Include="Addrs.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="RakPeerInterfaceRecreated.cpp">
+    <ClCompile Include="OLRakPeerInterface.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="RakPeerFactoryRedirect.cpp">

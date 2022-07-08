@@ -3,5 +3,5 @@
 class RakPeerFactoryRedirect
 {
 public:
-	static void Initialize();
+	static void initialize();
 };

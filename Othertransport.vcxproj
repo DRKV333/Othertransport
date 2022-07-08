@@ -167,17 +167,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="addrs.h" />
+    <ClInclude Include="Addrs.h" />
     <ClInclude Include="DummyRakPeer.h" />
     <ClInclude Include="Log.h" />
     <ClInclude Include="OLBitStreamWriter.h" />
     <ClInclude Include="OLRakNetTypes.h" />
     <ClInclude Include="RakPeerFactoryRedirect.h" />
-    <ClInclude Include="RakPeerInterfaceRecreated.h" />
+    <ClInclude Include="OLRakPeerInterface.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="addrs.cpp" />
+    <ClCompile Include="Addrs.cpp" />
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="DummyRakPeer.cpp" />
     <ClCompile Include="Log.cpp" />
@@ -189,7 +189,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="RakPeerFactoryRedirect.cpp" />
-    <ClCompile Include="RakPeerInterfaceRecreated.cpp" />
+    <ClCompile Include="OLRakPeerInterface.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Othertransport.def" />

@@ -5,7 +5,7 @@
 class OLBitStreamWriter
 {
 private:
-	OLBitStreamWriter() = default;
+	OLBitStreamWriter() = delete;
 
 public:
 	uint32_t getNumberOfBytesUsed();

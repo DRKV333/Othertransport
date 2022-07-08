@@ -1,18 +1,17 @@
 #include "pch.h"
 
-#include "addrs.h"
+#include "Addrs.h"
 #include "RakPeerFactoryRedirect.h"
 
 BOOL APIENTRY DllMain(HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserved)
 {
     if (ul_reason_for_call == DLL_PROCESS_ATTACH)
     {
-        addrs::Initialize();
+        Addrs::initialize();
         MH_Initialize();
-        RakPeerFactoryRedirect::Initialize();
+        RakPeerFactoryRedirect::initialize();
         MH_ApplyQueued();
     }
 
     return TRUE;
 }
-

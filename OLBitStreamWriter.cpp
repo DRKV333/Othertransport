@@ -1,4 +1,5 @@
 #include "pch.h"
+
 #include "OLBitStreamWriter.h"
 
 template <typename T, intptr_t offest>

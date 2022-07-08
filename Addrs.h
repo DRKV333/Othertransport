@@ -2,7 +2,7 @@
 
 #include <array>
 
-class addrs
+class Addrs
 {
 public:
 	enum addrId
@@ -23,5 +23,5 @@ private:
 public:
 	static uintptr_t get(addrId id) { return current[id]; }
 	static void* getptr(addrId id) { return reinterpret_cast<void*>(current[id]); }
-	static void Initialize();
+	static void initialize();
 };
