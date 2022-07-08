@@ -23,7 +23,7 @@ bool DummyRakPeer::connect(char* host, uint16_t remotePort, char* passwordData, 
 	return true;
 }
 
-bool DummyRakPeer::send2(OLBitStreamWriter* stream, uint32_t arg2, uint32_t arg3, char arg4, uint32_t arg5, uint32_t arg6, char arg7)
+bool DummyRakPeer::send2(OLBitStreamWriter* stream, uint32_t arg2, uint32_t arg3, char arg4, OLSystemAddress adddress, char arg7)
 {
 	LOG_DEBUG(L"[%X] data: %X, length: %u", this, stream->getData(), stream->getNumberOfBytesUsed());
 	return true;
@@ -38,4 +38,10 @@ bool DummyRakPeer::isConnected(OLSystemAddress address, bool flag1, bool flag2)
 {
 	LOG_DEBUG(L"[%X] %X:%u", this, address.ip, address.port);
 	return connected;
+}
+
+OLSystemAddress* DummyRakPeer::getSystemAddressFromIndex(OLSystemAddress* address, int index)
+{
+	*address = OL_UNASSIGNED_SYSTEM_ADDRESS;
+	return address;
 }

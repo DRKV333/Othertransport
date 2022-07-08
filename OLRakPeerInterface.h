@@ -39,7 +39,7 @@ public:
 
 	UNIMPLEMENTED(send1)
 
-	virtual bool send2(class OLBitStreamWriter* stream, uint32_t arg2, uint32_t arg3, char arg4, uint32_t arg5, uint32_t arg6, char arg7) = 0;
+	virtual bool send2(class OLBitStreamWriter* stream, uint32_t arg2, uint32_t arg3, char arg4, OLSystemAddress adddress, char arg7) = 0;
 
 	UNIMPLEMENTED(send3)
 	UNIMPLEMENTED(send4)
@@ -51,14 +51,16 @@ public:
 	UNIMPLEMENTED(deallocatePacket)
 
 	UNIMPLEMENTED(getMaximumNumberOfPeers)
-	UNIMPLEMENTED(NOTSURE3)
+	UNIMPLEMENTED(FUN_0174d630)
 	
 	virtual bool isConnected(OLSystemAddress address, bool flag1, bool flag2) = 0;
 
-	UNIMPLEMENTED(getConnectionState)
-	UNIMPLEMENTED(cancelConnectionAttempt)
-	UNIMPLEMENTED(getIndexFromSystemAddress)
-	UNIMPLEMENTED(getSystemAddressFromIndex)
+	UNIMPLEMENTED(GetRemoteSystemFromSystemAddressPub)
+
+	virtual OLSystemAddress* getSystemAddressFromIndex(OLSystemAddress* address, int index) = 0;
+
+	UNIMPLEMENTED(FUN_0174d910)
+	UNIMPLEMENTED(FUN_0174d8e0)
 	UNIMPLEMENTED(getUIDFromIndex)
 	UNIMPLEMENTED(getSystemList)
 	UNIMPLEMENTED(addToBanList)

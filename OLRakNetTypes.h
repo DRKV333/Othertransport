@@ -40,5 +40,6 @@ static_assert(offsetof(OLPacket, lengthBits)    == 32);
 static_assert(offsetof(OLPacket, data)          == 36);
 static_assert(offsetof(OLPacket, deleteData)    == 40);
 
+constexpr OLSystemAddress OL_UNASSIGNED_SYSTEM_ADDRESS = { 0xFF, 0xFF, 0xFF, 0xFF, 0xFFFF };
 constexpr OLRakNetGUID OL_UNASSIGNED_GUID = { 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF };
 constexpr uint16_t OL_UNASSINED_SYSTEM_INDEX = 0xFF;

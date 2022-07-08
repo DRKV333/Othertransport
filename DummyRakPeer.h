@@ -14,9 +14,11 @@ public:
 
 	virtual bool connect(char* host, uint16_t remotePort, char* passwordData, uint32_t passworkDataLenght, uint32_t connectionSocketIndex) override;
 
-	virtual bool send2(class OLBitStreamWriter* stream, uint32_t arg2, uint32_t arg3, char arg4, uint32_t arg5, uint32_t arg6, char arg7) override;
+	virtual bool send2(class OLBitStreamWriter* stream, uint32_t arg2, uint32_t arg3, char arg4, OLSystemAddress adddress, char arg7) override;
 
 	virtual void* receive(void* arg) override;
 
 	virtual bool isConnected(OLSystemAddress address, bool flag1, bool flag2) override;
+
+	virtual OLSystemAddress* getSystemAddressFromIndex(OLSystemAddress* address, int index) override;
 };
