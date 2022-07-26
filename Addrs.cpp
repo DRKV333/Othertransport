@@ -17,9 +17,10 @@ static_assert(std::ranges::find(NAME, 0) == std::ranges::end(NAME), \
 DEFTABLE(Addrs::table_t, test32,
 {
 	$[Addrs::base]                    = 0x00400000;
-	$[Addrs::winMain]                 = 0x01137910;
+	$[Addrs::unrealMain]              = 0x01137840;
 	$[Addrs::getRakPeerInterface]     = 0x01747550;
 	$[Addrs::destroyRakPeerInterface] = 0x01747560;
+	$[Addrs::parseIpV4]               = 0x01b5ec20;
 })
 
 void Addrs::initialize()

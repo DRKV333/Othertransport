@@ -8,9 +8,10 @@ public:
 	enum addrId
 	{
 		base,
-		winMain,
+		unrealMain,
 		getRakPeerInterface,
 		destroyRakPeerInterface,
+		parseIpV4,
 
 		ADDRID_SIZE
 	};

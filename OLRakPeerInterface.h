@@ -45,10 +45,11 @@ public:
 	UNIMPLEMENTED(send4)
 	UNIMPLEMENTED(send5)
 
-	virtual void* receive(void* arg) = 0;
+	virtual OLPacket* receive(void* arg) = 0;
 
 	UNIMPLEMENTED(allocatePacket)
-	UNIMPLEMENTED(deallocatePacket)
+
+	virtual void deallocatePacket(OLPacket* packet) = 0;
 
 	UNIMPLEMENTED(getMaximumNumberOfPeers)
 	UNIMPLEMENTED(FUN_0174d630)
