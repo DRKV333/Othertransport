@@ -170,7 +170,6 @@
     <ClInclude Include="Addrs.h" />
     <ClInclude Include="DummyRakPeer.h" />
     <ClInclude Include="Log.h" />
-    <ClInclude Include="OLBitStreamWriter.h" />
     <ClInclude Include="OLRakNetTypes.h" />
     <ClInclude Include="RakPeerFactoryRedirect.h" />
     <ClInclude Include="OLRakPeerInterface.h" />
@@ -181,7 +180,6 @@
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="DummyRakPeer.cpp" />
     <ClCompile Include="Log.cpp" />
-    <ClCompile Include="OLBitStreamWriter.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

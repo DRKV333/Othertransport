@@ -27,7 +27,7 @@ public:
 
 	virtual bool connect(char* host, uint16_t remotePort, char* passwordData, uint32_t passworkDataLenght, uint32_t connectionSocketIndex) override;
 
-	virtual bool send2(class OLBitStreamWriter* stream, uint32_t arg2, uint32_t arg3, char arg4, OLSystemAddress adddress, char arg7) override;
+	virtual bool send2(OLBitStream* stream, uint32_t arg2, uint32_t arg3, char arg4, OLSystemAddress adddress, char arg7) override;
 
 	virtual OLPacket* receive(void* arg) override;
 

@@ -63,3 +63,32 @@ enum OLDefaultMessageIDTypes : char
 	OL_ID_CONNECTION_REQUEST_ACCEPTED = 0x0B,
 	OL_ID_CONNECTION_ATTEMPT_FAILED = 0x0C
 };
+
+struct OLBitStream
+{
+	uint32_t numberOfBitsUsed;
+	uint32_t numberOfBitsAllocated;
+	uint32_t readOffset;
+	char* data;
+	bool copyData;
+	alignas(4) char stackData[1024];
+
+	uint32_t getNumberOfBytesUsed() const
+	{
+		return (numberOfBitsUsed + 7) >> 3;
+	}
+
+	uint32_t getNumberOfBytesAllocated() const
+	{
+		return (numberOfBitsAllocated + 7) >> 3;
+	}
+};
+
+static_assert(sizeof(OLBitStream) == 1044);
+static_assert(std::is_standard_layout_v<OLBitStream>);
+static_assert(offsetof(OLBitStream, numberOfBitsUsed)      == 0);
+static_assert(offsetof(OLBitStream, numberOfBitsAllocated) == 4);
+static_assert(offsetof(OLBitStream, readOffset)            == 8);
+static_assert(offsetof(OLBitStream, data)                  == 12);
+static_assert(offsetof(OLBitStream, copyData)              == 16);
+static_assert(offsetof(OLBitStream, stackData)             == 20);

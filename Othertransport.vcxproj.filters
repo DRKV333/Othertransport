@@ -30,9 +30,6 @@
     <ClInclude Include="DummyRakPeer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="OLBitStreamWriter.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="OLRakNetTypes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -57,9 +54,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="DummyRakPeer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="OLBitStreamWriter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Log.cpp">

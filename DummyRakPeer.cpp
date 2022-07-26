@@ -2,7 +2,6 @@
 
 #include "DummyRakPeer.h"
 
-#include "OLBitStreamWriter.h"
 #include "Log.h"
 #include "Addrs.h"
 
@@ -40,9 +39,9 @@ bool DummyRakPeer::connect(char* host, uint16_t remotePort, char* passwordData, 
 	}
 }
 
-bool DummyRakPeer::send2(OLBitStreamWriter* stream, uint32_t arg2, uint32_t arg3, char arg4, OLSystemAddress adddress, char arg7)
+bool DummyRakPeer::send2(OLBitStream* stream, uint32_t arg2, uint32_t arg3, char arg4, OLSystemAddress adddress, char arg7)
 {
-	LOG_DEBUG(L"[%X] data: %X, length: %u, address: %X:%u", this, stream->getData(), stream->getNumberOfBytesUsed(), adddress.ip, adddress.port);
+	LOG_DEBUG(L"[%X] data: %X, length: %u, address: %X:%u", this, stream->data, stream->getNumberOfBytesUsed(), adddress.ip, adddress.port);
 	return true;
 }
 

@@ -39,7 +39,7 @@ public:
 
 	UNIMPLEMENTED(send1)
 
-	virtual bool send2(class OLBitStreamWriter* stream, uint32_t arg2, uint32_t arg3, char arg4, OLSystemAddress adddress, char arg7) = 0;
+	virtual bool send2(OLBitStream* stream, uint32_t arg2, uint32_t arg3, char arg4, OLSystemAddress adddress, char arg7) = 0;
 
 	UNIMPLEMENTED(send3)
 	UNIMPLEMENTED(send4)
