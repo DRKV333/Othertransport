@@ -71,7 +71,7 @@ struct OLBitStream
 	uint32_t readOffset;
 	char* data;
 	bool copyData;
-	alignas(4) char stackData[1024];
+	char stackData[1024];
 
 	uint32_t getNumberOfBytesUsed() const
 	{
@@ -91,4 +91,4 @@ static_assert(offsetof(OLBitStream, numberOfBitsAllocated) == 4);
 static_assert(offsetof(OLBitStream, readOffset)            == 8);
 static_assert(offsetof(OLBitStream, data)                  == 12);
 static_assert(offsetof(OLBitStream, copyData)              == 16);
-static_assert(offsetof(OLBitStream, stackData)             == 20);
+static_assert(offsetof(OLBitStream, stackData)             == 17);
