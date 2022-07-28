@@ -1,17 +1,17 @@
 #include "pch.h"
 
-#include "DummyRakPeer.h"
+#include "OLRakPeerAdapter.h"
 
 #include "Log.h"
 #include "Addrs.h"
 #include "AsyncSocket.h"
 
-uint16_t DummyRakPeer::numberOfConnections()
+uint16_t OLRakPeerAdapter::numberOfConnections()
 {
 	return connected ? 1 : 0;
 }
 
-bool DummyRakPeer::connect(char* host, uint16_t remotePort, char* passwordData, uint32_t passworkDataLenght, uint32_t connectionSocketIndex)
+bool OLRakPeerAdapter::connect(char* host, uint16_t remotePort, char* passwordData, uint32_t passworkDataLenght, uint32_t connectionSocketIndex)
 {
 	LOG_DEBUG(L"[%X] %S:%u", this, host, remotePort);
 
@@ -37,7 +37,7 @@ bool DummyRakPeer::connect(char* host, uint16_t remotePort, char* passwordData, 
 	}
 }
 
-bool DummyRakPeer::send2(OLBitStream* stream, uint32_t arg2, uint32_t arg3, char arg4, OLSystemAddress address, char arg7)
+bool OLRakPeerAdapter::send2(OLBitStream* stream, uint32_t arg2, uint32_t arg3, char arg4, OLSystemAddress address, char arg7)
 {
 	if (address == thePacket.systemAddress)
 	{
@@ -51,7 +51,7 @@ bool DummyRakPeer::send2(OLBitStream* stream, uint32_t arg2, uint32_t arg3, char
 	}
 }
 
-OLPacket* DummyRakPeer::receive(void* arg)
+OLPacket* OLRakPeerAdapter::receive(void* arg)
 {
 	if (thePacketWasReceived)
 	{
@@ -73,7 +73,7 @@ OLPacket* DummyRakPeer::receive(void* arg)
 	return &thePacket;
 }
 
-void DummyRakPeer::deallocatePacket(OLPacket* packet)
+void OLRakPeerAdapter::deallocatePacket(OLPacket* packet)
 {
 	if (packet != &thePacket)
 	{
@@ -90,13 +90,13 @@ void DummyRakPeer::deallocatePacket(OLPacket* packet)
 	}
 }
 
-bool DummyRakPeer::isConnected(OLSystemAddress address, bool flag1, bool flag2)
+bool OLRakPeerAdapter::isConnected(OLSystemAddress address, bool flag1, bool flag2)
 {
 	LOG_DEBUG(L"[%X] %X:%u", this, address.ip, address.port);	
 	return connected && address == thePacket.systemAddress;
 }
 
-OLSystemAddress* DummyRakPeer::getSystemAddressFromIndex(OLSystemAddress* address, int index)
+OLSystemAddress* OLRakPeerAdapter::getSystemAddressFromIndex(OLSystemAddress* address, int index)
 {
 	if (connected && index == 0)
 		*address = thePacket.systemAddress;

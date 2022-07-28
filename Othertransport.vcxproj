@@ -169,10 +169,10 @@
   <ItemGroup>
     <ClInclude Include="Addrs.h" />
     <ClInclude Include="AsyncSocket.h" />
-    <ClInclude Include="DummyRakPeer.h" />
     <ClInclude Include="DummySocket.h" />
     <ClInclude Include="Log.h" />
     <ClInclude Include="OLRakNetTypes.h" />
+    <ClInclude Include="OLRakPeerAdapter.h" />
     <ClInclude Include="RakPeerFactoryRedirect.h" />
     <ClInclude Include="OLRakPeerInterface.h" />
     <ClInclude Include="pch.h" />
@@ -180,9 +180,9 @@
   <ItemGroup>
     <ClCompile Include="Addrs.cpp" />
     <ClCompile Include="dllmain.cpp" />
-    <ClCompile Include="DummyRakPeer.cpp" />
     <ClCompile Include="DummySocket.cpp" />
     <ClCompile Include="Log.cpp" />
+    <ClCompile Include="OLRakPeerAdapter.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

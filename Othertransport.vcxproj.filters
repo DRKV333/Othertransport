@@ -39,7 +39,7 @@
     <ClInclude Include="DummySocket.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="DummyRakPeer.h">
+    <ClInclude Include="OLRakPeerAdapter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -65,7 +65,7 @@
     <ClCompile Include="DummySocket.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="DummyRakPeer.cpp">
+    <ClCompile Include="OLRakPeerAdapter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

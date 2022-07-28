@@ -3,13 +3,13 @@
 #include "RakPeerFactoryRedirect.h"
 
 #include "Addrs.h"
-#include "DummyRakPeer.h"
+#include "OLRakPeerAdapter.h"
 #include "DummySocket.h"
 #include "Log.h"
 
 static OLRakPeerInterface* __stdcall getRakPeerInterface()
 {
-	OLRakPeerInterface* rakPeer = new DummyRakPeer(std::make_unique<DummySocket>());
+	OLRakPeerInterface* rakPeer = new OLRakPeerAdapter(std::make_unique<DummySocket>());
 	LOG_DEBUG(L"Created RakPeer: %X", rakPeer);
 	return rakPeer;
 }

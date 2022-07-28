@@ -4,7 +4,7 @@
 
 #include <memory>
 
-class DummyRakPeer : public OLRakPeerInterface
+class OLRakPeerAdapter : public OLRakPeerInterface
 {
 private:
 	bool connected = false;
@@ -23,7 +23,7 @@ private:
 	std::unique_ptr<class AsyncSocket> socket;
 
 public:
-	explicit DummyRakPeer(std::unique_ptr<class AsyncSocket> socket) : socket(std::move(socket)) { }
+	explicit OLRakPeerAdapter(std::unique_ptr<class AsyncSocket> socket) : socket(std::move(socket)) { }
 
 	virtual uint16_t numberOfConnections() override;
 
