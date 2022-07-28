@@ -4,11 +4,12 @@
 
 #include "Addrs.h"
 #include "DummyRakPeer.h"
+#include "DummySocket.h"
 #include "Log.h"
 
 static OLRakPeerInterface* __stdcall getRakPeerInterface()
 {
-	OLRakPeerInterface* rakPeer = new DummyRakPeer();
+	OLRakPeerInterface* rakPeer = new DummyRakPeer(std::make_unique<DummySocket>());
 	LOG_DEBUG(L"Created RakPeer: %X", rakPeer);
 	return rakPeer;
 }

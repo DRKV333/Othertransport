@@ -2,12 +2,13 @@
 
 #include "OLRakPeerInterface.h"
 
+#include <memory>
+
 class DummyRakPeer : public OLRakPeerInterface
 {
 private:
 	bool connected = false;
-	bool pendingConnectMessage = false;
-
+	
 	OLPacket thePacket{
 		OLPacket::unassignedSystemIndex,
 		OLSystemAddress::unassigned,
@@ -16,18 +17,19 @@ private:
 	};
 	bool thePacketWasReceived = false;
 
-	char connectMessage = OLDefaultMessageIDTypes::OL_ID_CONNECTION_REQUEST_ACCEPTED;
-
 	static constexpr OLRakNetGUID connectedGUID = { 0x01, 0x00, 0x00, 0x00 };
+	static constexpr uint16_t connectedSystemIndex = 0;
+
+	std::unique_ptr<class AsyncSocket> socket;
 
 public:
-	virtual bool startup(uint16_t maxConnections, int32_t _threadSleepTimer, void* socketDescriptor, uint32_t socketDescriptorCount, void* logger1, void* logger2) override;
+	explicit DummyRakPeer(std::unique_ptr<class AsyncSocket> socket) : socket(std::move(socket)) { }
 
 	virtual uint16_t numberOfConnections() override;
 
 	virtual bool connect(char* host, uint16_t remotePort, char* passwordData, uint32_t passworkDataLenght, uint32_t connectionSocketIndex) override;
 
-	virtual bool send2(OLBitStream* stream, uint32_t arg2, uint32_t arg3, char arg4, OLSystemAddress adddress, char arg7) override;
+	virtual bool send2(OLBitStream* stream, uint32_t arg2, uint32_t arg3, char arg4, OLSystemAddress address, char arg7) override;
 
 	virtual OLPacket* receive(void* arg) override;
 

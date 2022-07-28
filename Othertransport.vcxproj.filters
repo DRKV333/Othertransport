@@ -27,13 +27,19 @@
     <ClInclude Include="RakPeerFactoryRedirect.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="DummyRakPeer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="OLRakNetTypes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Log.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AsyncSocket.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DummySocket.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DummyRakPeer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -53,10 +59,13 @@
     <ClCompile Include="RakPeerFactoryRedirect.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="DummyRakPeer.cpp">
+    <ClCompile Include="Log.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Log.cpp">
+    <ClCompile Include="DummySocket.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DummyRakPeer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -4,12 +4,7 @@
 
 #include "Log.h"
 #include "Addrs.h"
-
-bool DummyRakPeer::startup(uint16_t maxConnections, int32_t _threadSleepTimer, void* socketDescriptor, uint32_t socketDescriptorCount, void* logger1, void* logger2)
-{
-	LOG_DEBUG(L"[%X] maxConnections: %u, _threadSleepTimer: %d, socketDescriptorCount: %u", this, maxConnections, _threadSleepTimer, socketDescriptorCount);
-	return true; // Weirdly, a 0 here indicates failure.
-}
+#include "AsyncSocket.h"
 
 uint16_t DummyRakPeer::numberOfConnections()
 {
@@ -27,22 +22,33 @@ bool DummyRakPeer::connect(char* host, uint16_t remotePort, char* passwordData, 
 	}
 	else
 	{
-		thePacket.systemIndex = 0;
+		uint32_t ip[2];
+		reinterpret_cast<void(__cdecl*)(uint32_t*, char*)>(Addrs::getptr(Addrs::parseIpV4))(ip, host);
+
+		thePacket.systemIndex = connectedSystemIndex;
+		thePacket.systemAddress.ip = ip[0];
 		thePacket.systemAddress.port = remotePort;
 		thePacket.systemGUID = connectedGUID;
 
-		reinterpret_cast<void(__cdecl*)(uint32_t*, char*)>(Addrs::getptr(Addrs::parseIpV4))(&thePacket.systemAddress.ip, host);
-	
+		socket->connect(ip[0], remotePort);
+
 		connected = true;
-		pendingConnectMessage = true;
 		return true;
 	}
 }
 
-bool DummyRakPeer::send2(OLBitStream* stream, uint32_t arg2, uint32_t arg3, char arg4, OLSystemAddress adddress, char arg7)
+bool DummyRakPeer::send2(OLBitStream* stream, uint32_t arg2, uint32_t arg3, char arg4, OLSystemAddress address, char arg7)
 {
-	LOG_DEBUG(L"[%X] data: %X, length: %u, address: %X:%u", this, stream->data, stream->getNumberOfBytesUsed(), adddress.ip, adddress.port);
-	return true;
+	if (address == thePacket.systemAddress)
+	{
+		socket->send(stream->data, stream->getNumberOfBytesUsed());
+		return true;
+	}
+	else
+	{
+		LOG_DEBUG(L"Message sent to wrong address: %X:%u", address.ip, address.port);
+		return false;
+	}
 }
 
 OLPacket* DummyRakPeer::receive(void* arg)
@@ -53,30 +59,35 @@ OLPacket* DummyRakPeer::receive(void* arg)
 		return nullptr;
 	}
 
-	if (pendingConnectMessage)
-	{
-		thePacket.length = 1;
-		thePacket.lengthBits = 1 * 8;
+	uint32_t length;
+	char* data = socket->receive(&length);
 
-		thePacket.data = &connectMessage;
+	if (data == nullptr)
+		return nullptr;
 
-		pendingConnectMessage = false;
-		thePacketWasReceived = true;
-		LOG_DEBUG(L"Received connect message");
-		return &thePacket;
-	}
+	thePacket.data = data;
+	thePacket.length = length;
+	thePacket.lengthBits = length * 8;
 
-	return nullptr;
+	thePacketWasReceived = true;
+	return &thePacket;
 }
 
 void DummyRakPeer::deallocatePacket(OLPacket* packet)
 {
 	if (packet != &thePacket)
+	{
 		LOG_DEBUG(L"[%X] Tried to deallocate invalid packet: %X", this, packet);
+	}
 	else if (!thePacketWasReceived)
+	{
 		LOG_DEBUG(L"[%X] Packet was not sent before deallocate.");
+	}
 	else
+	{
+		socket->receiveAck();
 		thePacketWasReceived = false;
+	}
 }
 
 bool DummyRakPeer::isConnected(OLSystemAddress address, bool flag1, bool flag2)

@@ -14,7 +14,11 @@ private:
 public:
 	virtual ~OLRakPeerInterface() = default;
 
-	virtual bool startup(uint16_t maxConnections, int32_t _threadSleepTimer, void* socketDescriptor, uint32_t socketDescriptorCount, void* logger1, void* logger2) = 0;
+	virtual bool startup(uint16_t maxConnections, int32_t _threadSleepTimer, void* socketDescriptor, uint32_t socketDescriptorCount, void* logger1, void* logger2) final
+	{
+		// Called with maxConnections = 1, _threadSleepTimer = 8, socketDescriptorCount = 1
+		return true;
+	};
 
 	virtual void initializeSecurity(void* arg1, void* arg2, int arg3, int arg4) final { } // This is called with all 0s after GetRakPeerInterface.
 
@@ -39,7 +43,7 @@ public:
 
 	UNIMPLEMENTED(send1)
 
-	virtual bool send2(OLBitStream* stream, uint32_t arg2, uint32_t arg3, char arg4, OLSystemAddress adddress, char arg7) = 0;
+	virtual bool send2(OLBitStream* stream, uint32_t arg2, uint32_t arg3, char arg4, OLSystemAddress address, char arg7) = 0;
 
 	UNIMPLEMENTED(send3)
 	UNIMPLEMENTED(send4)
