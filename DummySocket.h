@@ -10,7 +10,7 @@ private:
 	char connectMessage = OLDefaultMessageIDTypes::OL_ID_CONNECTION_REQUEST_ACCEPTED;
 
 public:
-	virtual void connect(uint32_t ip, uint32_t port) override;
+	virtual void connect(uint32_t ip, uint16_t port) override;
 
 	virtual void send(const char* data, uint32_t length) override;
 

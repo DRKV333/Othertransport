@@ -4,12 +4,15 @@
 
 #include "Addrs.h"
 #include "OLRakPeerAdapter.h"
-#include "DummySocket.h"
+#include "TCPSocket.h"
 #include "Log.h"
+
+static asio::io_context context;
+asio::executor_work_guard<asio::io_context::executor_type> guard(context.get_executor());
 
 static OLRakPeerInterface* __stdcall getRakPeerInterface()
 {
-	OLRakPeerInterface* rakPeer = new OLRakPeerAdapter(std::make_unique<DummySocket>());
+	OLRakPeerInterface* rakPeer = new OLRakPeerAdapter(std::make_unique<TCPSocket>(context));
 	LOG_DEBUG(L"Created RakPeer: %X", rakPeer);
 	return rakPeer;
 }
@@ -26,4 +29,9 @@ void RakPeerFactoryRedirect::initialize()
 	MH_CreateHook(Addrs::getptr(Addrs::destroyRakPeerInterface), &destroyRakPeerInterface, nullptr);
 	MH_QueueEnableHook(Addrs::getptr(Addrs::getRakPeerInterface));
 	MH_QueueEnableHook(Addrs::getptr(Addrs::destroyRakPeerInterface));
+}
+
+void RakPeerFactoryRedirect::initializePostMain()
+{
+	asio::thread ioThread([]() { context.run(); LOG_DEBUG(L"Oh no, the io thread stopped."); });
 }

@@ -1,3 +1,9 @@
 [submodule "minhook"]
 	path = minhook
 	url = https://github.com/TsudaKageyu/minhook.git
+[submodule "asio"]
+	path = asio
+	url = https://github.com/chriskohlhoff/asio.git
+[submodule "readerwriterqueue/readerwriterqueue"]
+	path = readerwriterqueue/readerwriterqueue
+	url = https://github.com/cameron314/readerwriterqueue.git

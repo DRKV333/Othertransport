@@ -93,6 +93,7 @@
       <LanguageStandard>stdcpp20</LanguageStandard>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <UseStandardPreprocessor>true</UseStandardPreprocessor>
+      <AdditionalIncludeDirectories>asio\asio\include;readerwriterqueue;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -176,6 +177,7 @@
     <ClInclude Include="RakPeerFactoryRedirect.h" />
     <ClInclude Include="OLRakPeerInterface.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="TCPSocket.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Addrs.cpp" />
@@ -191,6 +193,7 @@
     </ClCompile>
     <ClCompile Include="RakPeerFactoryRedirect.cpp" />
     <ClCompile Include="OLRakPeerInterface.cpp" />
+    <ClCompile Include="TCPSocket.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Othertransport.def" />

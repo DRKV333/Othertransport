@@ -4,7 +4,7 @@
 
 #include "Log.h"
 
-void DummySocket::connect(uint32_t ip, uint32_t port)
+void DummySocket::connect(uint32_t ip, uint16_t port)
 {
     pendingConnectMessage = true;
 }

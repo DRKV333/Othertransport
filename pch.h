@@ -12,6 +12,12 @@
 
 #include "minhook/include/MinHook.h"
 
+#define ASIO_NO_DEPRECATED
+#include <asio.hpp>
+
+#include <readerwriterqueue/readerwriterqueue.h>
+#include <readerwriterqueue/readerwritercircularbuffer.h>
+
 // add headers that you want to pre-compile here
 
 #endif //PCH_H
