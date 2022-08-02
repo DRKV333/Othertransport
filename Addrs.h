@@ -12,6 +12,8 @@ public:
 		getRakPeerInterface,
 		destroyRakPeerInterface,
 		parseIpV4,
+		wstring_cstr_ptr,
+		atlasUELogAppender_append,
 
 		ADDRID_SIZE
 	};

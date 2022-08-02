@@ -172,6 +172,7 @@
     <ClInclude Include="AsyncSocket.h" />
     <ClInclude Include="DummySocket.h" />
     <ClInclude Include="Log.h" />
+    <ClInclude Include="LoggingRedirect.h" />
     <ClInclude Include="OLRakNetTypes.h" />
     <ClInclude Include="OLRakPeerAdapter.h" />
     <ClInclude Include="RakPeerFactoryRedirect.h" />
@@ -184,6 +185,7 @@
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="DummySocket.cpp" />
     <ClCompile Include="Log.cpp" />
+    <ClCompile Include="LoggingRedirect.cpp" />
     <ClCompile Include="OLRakPeerAdapter.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

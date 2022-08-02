@@ -2,6 +2,7 @@
 
 #include "Addrs.h"
 #include "RakPeerFactoryRedirect.h"
+#include "LoggingRedirect.h"
 
 static INT __cdecl mainHook(LPWSTR cmdlinew, HINSTANCE hInst, HINSTANCE hInstPrev, PSTR cmdline);
 static decltype(&mainHook) mainOrig = nullptr;
@@ -26,6 +27,7 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserv
         MH_Initialize();
         installMainHook();
         RakPeerFactoryRedirect::initialize();
+        LoggingRedirect::initialize();
         MH_ApplyQueued();
     }
 
